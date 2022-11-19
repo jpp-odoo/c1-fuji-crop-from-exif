@@ -4,7 +4,7 @@ tell application "Capture One 21"
 		try
 			set imagePath to (get path of (get parent image of theVariant))
 			-- Extract the image aspect ratio from the EXIF
-			set commandLine to "eval `/usr/libexec/path_helper -s`; exiftool -X -RawImageAspectRatio \"" & imagePath & "\""
+			set commandLine to "eval `/usr/libexec/path_helper -s`; /opt/homebrew/bin/exiftool -X -RawImageAspectRatio \"" & imagePath & "\""
 			set xmlExif to (do shell script commandLine)
 			tell application "System Events"
 				set xmlData to make new XML data with properties {name:"xmldata", text:xmlExif}
